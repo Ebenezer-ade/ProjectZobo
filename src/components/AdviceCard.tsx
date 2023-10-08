@@ -10,14 +10,14 @@ interface Advice {
 }
 
 const AdviceCard = () => {
-  const [advices, setAdvices] = useState<Advice[]>([]);
-  const [ids, setIds] = useState<Advice[]>([]);
+  const [advices, setAdvices] = useState([]);
+  const [ids, setIds] = useState([]);
   const [randno, setRandno] = useState(1);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    axios.get<Advice[]>("https://api.adviceslip.com/advice").then((res) => {
+    axios.get("https://api.adviceslip.com/advice").then((res) => {
       setAdvices(res.data.slip.advice);
       setIds(res.data.slip.id);
       setLoading(false);
